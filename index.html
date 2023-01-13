@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popup Form</title>
+    <link rel="stylesheet" href="C:\Users\MEESEVA KMP\Desktop\connect\styles.css">
+</head>
+<body>
+    <input type="checkbox" id="show">
+    <label for="show" class="show-btn">View Form</label>
+
+    <div class="container">
+        <label for="show" class="close-btn" title="close">×</label>
+        <h1>Welcome</h1>
+        <form action="#">
+            <label>Email or Phone</label>
+            <input type="text">
+            <label>Password</label>
+            <input type="password">
+            <a href="C:\Users\MEESEVA KMP\Desktop\connect\forgot password.html">Forgot Password?</a>
+            <button id="login-btn">Submit</button>
+            <a href="C:\Users\MEESEVA KMP\Desktop\connect\signup3.html">Don't have an account? Sign up here</a>
+        </form>
+    </div>
+    <script>
+        document.getElementById('login-btn').addEventListener('click', function() {
+            window.location = 'C:\\Users\\abhis\\OneDrive\\Desktop\\connect\\dashbord.html';
+        });
+    </script>
+</body>
+</html>

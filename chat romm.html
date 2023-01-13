@@ -1,0 +1,160 @@
+<html>
+  <head>
+    <style>
+      body {
+  background-image: url(https://images.unsplash.com/photo-1640244674671-f32e0f186e12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80);
+  background-size: cover;
+  background-position: center;
+  animation: fadein 8s;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.chat-room {
+  display: flex;
+  height: 90vh;
+}
+
+.chat-room .sidebar {
+  width: 20%;
+  background-color: rgba(241, 241, 241, 0.8);
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.chat-room .sidebar h2 {
+  margin-bottom: 20px;
+}
+
+.chat-room .sidebar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.chat-room .sidebar ul li {
+  margin-bottom: 10px;
+}
+
+.chat-room .main {
+  width: 80%;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.chat-room .main h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.chat-room .main .messages {
+  width: 100%;
+  height: 300px;
+  overflow: auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 12px;
+  margin-bottom: 20px;
+}
+
+.chat-room .main form {
+  display: flex;
+}
+
+.chat-room .main form input[type="text"] {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.chat-room .main form input[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.chat-room .main form input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+    </style>
+  </head>
+  <body>
+    <div class="chat-room">
+      <div class="sidebar">
+        <h2>Live Participants</h2>
+        <ul id="participants">
+          <!-- Live participants will be added here -->
+        </ul>
+      </div>
+      <div class="main">
+        <h1>Chat Room</h1>
+        <div class="messages"></div>
+        <form onsubmit="sendMessage(); return false">
+          <input type="text" id="message" placeholder="Enter your message">
+          <input type="submit" value="Send">
+        </form>
+      </div>
+    </div>
+    
+    <script>
+      function sendMessage() {
+        // Send the message to the server
+        fetch('/send_message', {
+          method: 'POST',
+          body: JSON.stringify({
+            'message': document.getElementById('message').value
+          }),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+        
+        // Clear the message input field
+        document.getElementById('message').value = '';
+      }
+      
+      function handleJoinOrExit(event) {
+        // Update the list of live participants and display a notification
+        // when a user joins or exits the chat room
+        // ...
+      }
+      
+      setInterval(function() {
+        // Get the latest messages and live participants from the server
+        fetch('/get_messages_and_participants').then(function(response) {
+          return response.json();
+        }).then(function(data) {
+          // Update the messages and live participants on the page
+          var messagesDiv = document.querySelector('.messages');
+          messagesDiv.innerHTML = '';
+          for (var i = 0; i < data.messages.length; i++) {
+            var messageDiv = document.createElement('div');
+            messageDiv.innerHTML = data.messages[i];
+            messagesDiv.appendChild(messageDiv);
+          }
+          var participantsDiv = document.getElementById('participants');
+          participantsDiv.innerHTML = '';
+          for (var i = 0; i < data.participants.length; i++) {
+            var participantDiv = document.createElement('li');
+            participantDiv.innerHTML = data.participants[i];
+            participantsDiv.appendChild(participantDiv);
+          }
+        });
+      }, 1000);
+    </script>
+  </body>
+</html>

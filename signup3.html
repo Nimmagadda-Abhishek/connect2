@@ -1,0 +1,83 @@
+<html>
+  <head>
+    <style>
+      body {
+        background-image: url('https://source.unsplash.com/4qbS830djfs/1600x900');
+        background-size: cover;
+        background-position: center;
+        animation: fadein 8s;
+      }
+      
+      @keyframes fadein {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      
+      .signup-form {
+        max-width: 500px;
+        margin: auto;
+        background-color: white;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      
+      .signup-form h1 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      
+      .signup-form input[type="text"],
+      .signup-form input[type="email"],
+      .signup-form input[type="password"],
+      .signup-form input[type="file"] {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-bottom: 20px;
+      }
+      
+      .signup-form input[type="submit"] {
+        width: 100%;
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      
+      .signup-form input[type="submit"]:hover {
+        background-color: #45a049;
+      }
+    </style>
+    <script>
+      function redirect() {
+        alert("Your response has been generated. Please go to the login page to log in.");
+        setTimeout(function() {
+          window.location.href = "C:\Users\abhis\OneDrive\Desktop\connect\login.html";
+        }, 5000);
+      }
+    </script>
+  </head>
+  <body>
+    <form class="signup-form" action="/signup" method="post" enctype="multipart/form-data">
+      <h1>Sign Up</h1>
+      <input type="text" name="name" placeholder="Name" required>
+      <input type="email" name="email" placeholder="Email" required>
+      <input type="password" name="password" placeholder="Password" required>
+      <input type="password" name="password-confirm" placeholder="Confirm Password" required>
+      <input type="text" name="collage" placeholder="Collage" required>
+      <input type="text" name="branch" placeholder="Branch" required>
+      <input type="text" name="year" placeholder="Year" required>
+      <input type="file" name="profile-picture" accept="image/*" required>
+      <input type="submit" value="Sign Up" onclick="redirect()">
+       <a href="C:\Users\abhis\OneDrive\Desktop\connect\login.html">Already have an account? Login here</a>
+     </form>
+   </body>
+   </html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Dashboard</title>
+    <link rel="stylesheet"  href="C:\Users\sreev\OneDrive\Desktop\connect\dashbord styles.css">
+  </head>
+  <body>
+    <header>
+      <h1>My Dashboard</h1>
+    </header>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Profile</a>
+      <a href="#">Chat</a>
+      <form action="/search" method="get">
+        <input type="text" name="q" placeholder="Search for profiles">
+        <button type="submit">Go</button>
+      </form>
+    </nav>
+    <main>
+      <section id="profile">
+        <h2>My Profile</h2>
+        <div>
+          <img src="C:\Users\sreev\OneDrive\Desktop\connect\1672751219324.jpg" alt="Profile image">
+          <h3>User Details</h3>
+          <p>Name: Anil</p>
+          <p>Hyderabad, Telangana</p>
+        </div>
+      </section>
+    </main>
+    <aside>
+      <h2>Chatting Room</h2>
+      <div id="chat-messages"></div>
+      <form id="chat-form">
+        <input type="text" id="chat-input" placeholder="Type your message here">
+        <button type="submit">Send</button>
+      </form>
+    </aside>
+    <script>
+      window.addEventListener('load', function() {
+        document.querySelector('main').classList.add('loaded');
+      });
+    </script>
+  </body>
+</html>
